@@ -3,7 +3,7 @@ const router = express.Router()
 const createError = require('http-errors')
 const User = require('../models/user_models.js')
 const { authSchema } = require('../models/user_validation.js')
-const { signAccessToken } = require("../models/user_jwt.js")
+const { signAccessToken, signRefreshToken } = require("../models/user_jwt.js")
 
 router.post('/register', async (req, res, next) => {
     try {
@@ -17,7 +17,9 @@ router.post('/register', async (req, res, next) => {
         const user = new User(results)
         const saveUser = await user.save()
         const accessToken = await signAccessToken(saveUser.id)
-        res.send({ accessToken, message: "User Created Successfully" })
+        const refreshToken = await signRefreshToken(saveUser.id)
+
+        res.send({ accessToken, refreshToken, message: "User Created Successfully" })
 
     } catch (err) {
         if (err.isjoi == true) err.status = 422
@@ -34,8 +36,9 @@ router.post('/login', async (req, res, next) => {
         const ismatch = await user.isValidPassword(results.password)
         if (!ismatch) throw createError.Unauthorized("username/password not valid")
         const accessToken = await signAccessToken(user.id)
+        const refreshToken = await signRefreshToken(user.id)
 
-        res.send({ accessToken, message: "User Login Successfully" })
+        res.send({ accessToken, refreshToken, message: "User Login Successfully" })
 
     } catch (error) {
         if (error.isjoi === true)
