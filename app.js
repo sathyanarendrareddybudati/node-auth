@@ -4,7 +4,7 @@ const createError = require('http-errors');
 require('dotenv').config();
 require('./connections/mongoose.js');
 const Auth_user = require('./routes/user.js');
-const { verifyAccessToken } = require("./models/user_jwt.js")
+const { verifyAccessToken } = require("./helpers/user_jwt.js")
 
 const app = express();
 app.use(morgan('dev'));

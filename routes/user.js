@@ -3,7 +3,7 @@ const router = express.Router()
 const createError = require('http-errors')
 const User = require('../models/user_models.js')
 const { authSchema } = require('../models/user_validation.js')
-const { signAccessToken, signRefreshToken } = require("../models/user_jwt.js")
+const { signAccessToken, signRefreshToken } = require("../helpers/user_jwt.js")
 
 router.post('/register', async (req, res, next) => {
     try {
