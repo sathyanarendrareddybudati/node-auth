@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  # MongoDB services
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  # Node.js API services
+  api:
+    build: .
+    image: node-auth-image
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      MONGODB_URL: mongodb://mongo_db:27017
+      DB_NAME: bee_bros
+      ACCESS_TOKEN_SECRET: 79de2de5d4367af243986c735f3c51e72e149ca3b7de98521cf0c44c8c57aeb7
+      REFRESH_TOKEN_SECRET: 7b8134110b2ec7fcbe055eda7b1a62ac3fb8adfd11e1609b02ecc6900bab641c
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db:

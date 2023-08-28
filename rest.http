@@ -1,22 +1,22 @@
 GET http://localhost:3000
-Authorization: Bearer 7b8134110b2ec7fcbe055eda7b1a62ac3fb8adfd11e1609b02ecc6900bab641c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTMyMTM0NjMsImV4cCI6MTY5MzIxNzA2MywiYXVkIjoiNjRlYzVlYmNlMDJmMGI3ZGZmN2E4MzI0IiwiaXNzIjoic2F0eWEifQ.e4L5cXxGGP_VR4yjisc6tmKl6CPled69wnVpbNg4QcY
 #####
 POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
-    "name": "nava",
-    "email": "nava@gmail.com",
-    "phone_number": 7661060168,
-    "password": "12345"
+    "name": "satya",
+    "email": "satya@gmail.com",
+    "phone_number": 7661060169,
+    "password": "123456"
 }
 ####
 POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "email": "nava@gmail.com",
-    "password": "12345"
+    "email": "satya@gmail.com",
+    "password": "123456"
 }
 ####
 POST http://localhost:3000/user/refresh-token
