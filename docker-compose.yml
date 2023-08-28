@@ -1,4 +1,4 @@
-version: '3.9'
+version: '2'
 
 services:
   # MongoDB services
@@ -12,6 +12,7 @@ services:
   # Node.js API services
   api:
     build: .
+    image: node-auth-image
     ports:
       - 3000:3000
     environment:
