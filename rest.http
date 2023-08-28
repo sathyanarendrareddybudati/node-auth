@@ -5,10 +5,10 @@ POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
-    "name": "nava",
-    "email": "nava@gmail.com",
-    "phone_number": 7661060168,
-    "password": "12345"
+    "name": "satya",
+    "email": "satya@gmail.com",
+    "phone_number": 7661060169,
+    "password": "123456"
 }
 ####
 POST http://localhost:3000/user/login
